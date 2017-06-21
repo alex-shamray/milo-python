@@ -22,8 +22,8 @@ def parse(data):
     l = list(map(int, data.split('/')))
 
     possible_orderings = [
-        (l[2], l[1], l[0]),  # d/m/Y
         (l[0], l[1], l[2]),  # Y/m/d
+        (l[2], l[1], l[0]),  # d/m/Y
         (l[2], l[0], l[1]),  # m/d/Y
         # Exotic formats
         (l[0], l[2], l[1]),  # Y/d/m
