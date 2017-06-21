@@ -18,8 +18,8 @@ YEAR_FROM = 2000
 YEAR_TO = 3000
 
 
-def parse(data):
-    l = list(map(int, data.split('/')))
+def parse(d):
+    l = list(map(int, d.split('/')))
 
     possible_orderings = [
         (l[0], l[1], l[2]),  # Y/m/d
@@ -35,11 +35,10 @@ def parse(data):
         if year + YEAR_FROM < YEAR_TO:
             year = year + YEAR_FROM
         try:
-            d = date(year, month, day)
-            return d.strftime('%Y-%m-%d')
+            return date(year, month, day).strftime('%Y-%m-%d')
         except ValueError as e:
             logger.debug(e)
-    raise ValueError('Wrong format')
+    return '{} is illegal'.format(d)
 
 
 def main():
